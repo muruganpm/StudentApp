@@ -9,12 +9,8 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentDAO studentDAO;
-
     @Autowired
-    public StudentController(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
-    }
+    private StudentDAO studentDAO;
 
     @GetMapping
     public List<Student> getAllStudents() {
@@ -33,7 +29,7 @@ public class StudentController {
 
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        student.setId(id);  // Ensure ID is set
+        student.setId(id);
         studentDAO.updateStudent(student);
     }
 

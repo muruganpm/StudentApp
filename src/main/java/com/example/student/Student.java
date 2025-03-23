@@ -1,27 +1,11 @@
 package com.example.student;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "students")
 public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
 
-    // No-argument constructor (Required by JPA)
-    public Student() {
-    }
-
-    public Student(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
+    // Getters and setters
     public Long getId() {
         return id;
     }
