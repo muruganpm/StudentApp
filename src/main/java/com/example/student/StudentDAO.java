@@ -1,29 +1,49 @@
 package com.example.student;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Service
+@Repository
 public class StudentDAO {
 
-    @Autowired
-    private StudentRepository studentRepository;
+    private List<Student> students = new ArrayList<>();
 
+    public StudentDAO() {
+        // Adding some dummy data for the initial setup
+        students.add(new Student(1L, "John Doe", "Computer Science"));
+        students.add(new Student(2L, "Jane Doe", "Mathematics"));
+    }
+
+    // Get all students
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+        return students;
     }
 
+    // Get student by ID
     public Student getStudentById(Long id) {
-        return studentRepository.findById(id).orElse(null);
+        Optional<Student> student = students.stream().filter(s -> s.getId().equals(id)).findFirst();
+        return student.orElse(null);  // Return null if not found
     }
 
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+    // Create a new student
+    public Student createStudent(Student student) {
+        students.add(student);
+        return student;
     }
 
-    public void deleteStudent(Long id) {
-        studentRepository.deleteById(id);
+    // Update an existing student
+    public Student updateStudent(Student student) {
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId().equals(student.getId())) {
+                students.set(i, student);  // Replace existing student
+                return student;
+            }
+        }
+        return null;  // Return null if student is not found for update
     }
-}
+
+    // Delete a student
+    public void deleteStudent
