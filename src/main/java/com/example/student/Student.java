@@ -1,32 +1,34 @@
 package com.example.student;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Student {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
+    private String course;
     private int age;
 
-    // Default constructor (required by JPA)
-    public Student() {}
+    public Student() {
+    }
 
-    // Parameterized constructor
-    public Student(int id, String name, int age) {
-        this.id = id;
+    public Student(String name, String course, int age) {
         this.name = name;
+        this.course = course;
         this.age = age;
     }
 
-    // Getters and setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,16 +40,19 @@ public class Student {
         this.name = name;
     }
 
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{id=" + id + ", name='" + name + "', age=" + age + "}";
     }
 }
