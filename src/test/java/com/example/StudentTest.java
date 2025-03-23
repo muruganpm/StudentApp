@@ -1,31 +1,20 @@
-package com.example.student;
+package com.example;
 
-public class Student {
-    private int id;
-    private String name;
-    private int age;
+import com.example.student.Student;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    // Getter and setter for id
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+public class StudentTest {
 
-    // Getter and setter for name
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Test
+    public void testStudentProperties() {
+        Student student = new Student();
+        student.setId(1);
+        student.setName("Alice");
+        student.setAge(20);
 
-    // Getter and setter for age
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
+        assertEquals(1, student.getId());
+        assertEquals("Alice", student.getName());
+        assertEquals(20, student.getAge());
     }
 }
