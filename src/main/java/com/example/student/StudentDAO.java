@@ -46,4 +46,7 @@ public class StudentDAO {
     }
 
     // Delete a student
-    public void deleteStudent
+    public void deleteStudent(Long id) {
+        students.removeIf(student -> student.getId().equals(id));
+    }
+}
