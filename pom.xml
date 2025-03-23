@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -59,8 +59,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <!-- Define the main class for the Spring Boot application -->
-                    <mainClass>com.example.StudentAppApplication</mainClass> <!-- Replace with your main class if different -->
+                    <!-- Specify the fully qualified class name of the main class -->
+                    <mainClass>com.example.StudentApp</mainClass> <!-- Replace with your main class if different -->
                 </configuration>
             </plugin>
         </plugins>
