@@ -20,7 +20,7 @@ public class StudentTest {
     @Test
     public void testSetAge() {
         Student student = new Student(1L, "John Doe", "john.doe@example.com");
-        
+
         // Corrected method to set and get the age
         student.setAge(21);
         assertEquals(21, student.getAge());

@@ -1,16 +1,16 @@
 package com.example.student;
 
 public class Student {
-
-    private Long id;  // Ensure ID is Long, not String
+    private Long id;
     private String name;
-    private String major;
+    private String email;
+    private int age;
 
     // Constructor
-    public Student(Long id, String name, String major) {
+    public Student(Long id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.major = major;
+        this.email = email;
     }
 
     // Getters and Setters
@@ -30,11 +30,19 @@ public class Student {
         this.name = name;
     }
 
-    public String getMajor() {
-        return major;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
