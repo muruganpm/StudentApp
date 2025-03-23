@@ -5,12 +5,23 @@ import javax.persistence.Id;
 
 @Entity
 public class Student {
+
     @Id
     private int id;
     private String name;
     private int age;
 
-    // Getters and Setters
+    // Default constructor (required by JPA)
+    public Student() {}
+
+    // Parameterized constructor
+    public Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -37,6 +48,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", age=" + age + "]";
+        return "Student{id=" + id + ", name='" + name + "', age=" + age + "}";
     }
 }
