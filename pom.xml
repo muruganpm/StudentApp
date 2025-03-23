@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,7 +14,9 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <!-- Ensure using Java 11 or later -->
         <java.version>11</java.version>
+        <spring-boot.version>2.5.0</spring-boot.version> <!-- Spring Boot version -->
     </properties>
 
     <dependencies>
@@ -22,21 +24,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.5.0</version> <!-- Added version -->
+            <version>${spring-boot.version}</version>
         </dependency>
 
         <!-- Spring Boot Starter Data JPA for database interactions -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.5.0</version> <!-- Added version -->
+            <version>${spring-boot.version}</version>
         </dependency>
 
         <!-- H2 Database for in-memory database support -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version> <!-- Added version -->
+            <version>1.4.200</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -44,18 +46,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.5.0</version> <!-- Added version -->
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin for running the application -->
+            <!-- Spring Boot Maven Plugin for packaging the application as an executable JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.0</version> <!-- Added version -->
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <!-- Ensure the JAR is executable -->
+                    <mainClass>com.example.StudentApp</mainClass> <!-- Replace with your main class if different -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
