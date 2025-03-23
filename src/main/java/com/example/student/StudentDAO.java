@@ -1,21 +1,7 @@
 package com.example.student;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class StudentDAO {
-
-    private final List<Student> students = new ArrayList<>();
-
-    public void addStudent(int id, String name, int age) {
-        Student student = new Student();
-        student.setId(id);
-        student.setName(name);
-        student.setAge(age);
-        students.add(student);
-    }
-
-    public List<Student> getAllStudents() {
-        return students;
-    }
+public interface StudentRepository extends JpaRepository<Student, Integer> {
+    // Custom queries can be added here if needed
 }
