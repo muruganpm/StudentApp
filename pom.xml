@@ -14,9 +14,10 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <!-- Ensure using Java 11 or later -->
+        <!-- Java version -->
         <java.version>11</java.version>
-        <spring-boot.version>2.5.0</spring-boot.version> <!-- Spring Boot version -->
+        <!-- Spring Boot version -->
+        <spring-boot.version>2.5.0</spring-boot.version>
     </properties>
 
     <dependencies>
@@ -45,4 +46,25 @@
         <!-- Spring Boot Starter Test for unit tests -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin for packaging the application as an executable JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <!-- Ensure the JAR is executable -->
+                    <mainClass>com.example.StudentApp</mainClass> <!-- Replace with your main class if different -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
