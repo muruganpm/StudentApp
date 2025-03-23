@@ -63,6 +63,20 @@
                     <mainClass>com.example.StudentApp</mainClass> <!-- Replace with your main class if different -->
                 </configuration>
             </plugin>
+
+            <!-- Maven Jar Plugin to ensure the correct Main-Class entry in the manifest -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Main-Class>com.example.StudentApp</Main-Class> <!-- Ensure the Main-Class is correct -->
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
