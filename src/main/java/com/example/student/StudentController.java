@@ -9,35 +9,34 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    @Autowired
-    private StudentDAO studentDAO;
+    private final StudentDAO studentDAO;
 
-    // Get all students
+    @Autowired
+    public StudentController(StudentDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
+
     @GetMapping
     public List<Student> getAllStudents() {
         return studentDAO.getAllStudents();
     }
 
-    // Get student by ID
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id) {
         return studentDAO.getStudentById(id);
     }
 
-    // Create a new student
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
-        return studentDAO.createStudent(student);
+    public void createStudent(@RequestBody Student student) {
+        studentDAO.createStudent(student);
     }
 
-    // Update an existing student
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        student.setId(id);
-        return studentDAO.updateStudent(student);
+    public void updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        student.setId(id);  // Ensure ID is set
+        studentDAO.updateStudent(student);
     }
 
-    // Delete a student by ID
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Long id) {
         studentDAO.deleteStudent(id);
