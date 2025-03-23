@@ -4,38 +4,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
 public class StudentController {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentDAO studentDAO;
 
-    @GetMapping("/")
+    // Get all students
+    @GetMapping
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+        return studentDAO.getAllStudents();
     }
 
-    @PostMapping("/")
-    public Student createStudent(@RequestBody Student student) {
-        return studentRepository.save(student);
-    }
-
+    // Get student by ID
     @GetMapping("/{id}")
-    public Optional<Student> getStudentById(@PathVariable int id) {
-        return studentRepository.findById(id);
+    public Student getStudentById(@PathVariable Long id) {
+        return studentDAO.getStudentById(id);  // Changed from int to Long
     }
 
+    // Create a new student
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) {
+        return studentDAO.createStudent(student);
+    }
+
+    // Update an existing student
     @PutMapping("/{id}")
-    public Student updateStudent(@RequestBody Student student, @PathVariable int id) {
-        student.setId(id);
-        return studentRepository.save(student);
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        student.setId(id);  // Ensure the ID is set
+        return studentDAO.updateStudent(student);
     }
 
+    // Delete a student
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable int id) {
-        studentRepository.deleteById(id);
+    public void deleteStudent(@PathVariable Long id) {
+        studentDAO.deleteStudent(id);  // Changed from int to Long
     }
 }
