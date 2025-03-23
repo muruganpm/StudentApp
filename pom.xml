@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,10 +14,9 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <!-- Java version -->
+        <!-- Ensure using Java 11 or later -->
         <java.version>11</java.version>
-        <!-- Spring Boot version -->
-        <spring-boot.version>2.5.0</spring-boot.version>
+        <spring-boot.version>2.5.0</spring-boot.version> <!-- Spring Boot version -->
     </properties>
 
     <dependencies>
@@ -47,24 +46,4 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Spring Boot Maven Plugin for packaging the application as an executable JAR -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <configuration>
-                    <!-- Ensure the JAR is executable -->
-                    <mainClass>com.example.StudentApp</mainClass> <!-- Replace with your main class if different -->
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-</project>
+            <version>${
