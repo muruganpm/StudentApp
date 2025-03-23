@@ -1,8 +1,11 @@
 package com.example.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-    // JpaRepository provides methods like findAll(), save(), findById(), deleteById() automatically
+    // You can define custom queries here if needed
+    // Example: List<Student> findByName(String name);
 }
 
