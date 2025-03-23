@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
@@ -12,32 +13,27 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
-    // Get all students
-    @GetMapping
+    @GetMapping("/")
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    // Add a new student
-    @PostMapping
+    @PostMapping("/")
     public Student createStudent(@RequestBody Student student) {
         return studentRepository.save(student);
     }
 
-    // Get a student by id
     @GetMapping("/{id}")
-    public Student getStudent(@PathVariable int id) {
-        return studentRepository.findById(id).orElse(null);
+    public Optional<Student> getStudentById(@PathVariable int id) {
+        return studentRepository.findById(id);
     }
 
-    // Update a student
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
+    public Student updateStudent(@RequestBody Student student, @PathVariable int id) {
         student.setId(id);
         return studentRepository.save(student);
     }
 
-    // Delete a student
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable int id) {
         studentRepository.deleteById(id);
