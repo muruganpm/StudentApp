@@ -21,7 +21,7 @@ public class StudentController {
     // Get student by ID
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id) {
-        return studentDAO.getStudentById(id);  // Changed from int to Long
+        return studentDAO.getStudentById(id);
     }
 
     // Create a new student
@@ -33,13 +33,13 @@ public class StudentController {
     // Update an existing student
     @PutMapping("/{id}")
     public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        student.setId(id);  // Ensure the ID is set
+        student.setId(id);
         return studentDAO.updateStudent(student);
     }
 
-    // Delete a student
+    // Delete a student by ID
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Long id) {
-        studentDAO.deleteStudent(id);  // Changed from int to Long
+        studentDAO.deleteStudent(id);
     }
 }

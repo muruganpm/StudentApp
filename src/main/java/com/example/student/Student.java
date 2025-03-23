@@ -1,29 +1,19 @@
 package com.example.student;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;  // Ensure ID is Long, not String
     private String name;
-    private String course;
-    private int age;
+    private String major;
 
-    public Student() {
-    }
-
-    public Student(String name, String course, int age) {
+    // Constructor
+    public Student(Long id, String name, String major) {
+        this.id = id;
         this.name = name;
-        this.course = course;
-        this.age = age;
+        this.major = major;
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -40,19 +30,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getCourse() {
-        return course;
+    public String getMajor() {
+        return major;
     }
 
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setMajor(String major) {
+        this.major = major;
     }
 }
